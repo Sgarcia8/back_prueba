@@ -4,6 +4,7 @@ package prueba.api.user.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import prueba.api.user.dto.UserDTO;
 import prueba.api.user.responses.ResponseMessage;
@@ -22,20 +23,21 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/public")
+    @GetMapping("")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = userService.findAllUsers();
         return ResponseEntity.ok(users);
     }
 
-
-    @DeleteMapping("/admin/{email}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{email}")
     public ResponseEntity<?> deleteUsuario(@PathVariable("email") String email){
         userService.deleteUser(email);
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Usuario eliminado con éxito"));
     }
 
-    @PostMapping("/admin/actualizar/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping("/actualizar/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable("id") Long id, @RequestBody UserDTO userDTO){
         userDTO.setId(id);
         UserDTO userAct = userService.updateUser(userDTO);

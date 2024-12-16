@@ -43,8 +43,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/auth/**").permitAll(); // Permite acceso sin autenticación
-                    auth.requestMatchers("/api/users/public/**").authenticated(); // Rutas públicas solo autenticadas
-                    auth.requestMatchers("/api/users/admin/**").hasRole("ADMIN"); // Rutas protegidas para ADMIN
+                    auth.requestMatchers("/api/users/**").authenticated(); // Rutas solo autenticadas
                     auth.anyRequest().permitAll(); // Permite cualquier otra solicitud
                 })
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class) // Filtro JWT
