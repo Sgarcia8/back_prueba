@@ -67,16 +67,17 @@ La aplicación estará disponible en: `http://localhost:8080`
 ### Autenticación y registro
 
 - **POST** `/auth/register`: Registrar un nuevo usuario.
+  - El role puede ser USER(2) o ADMIN(1)
   - Cuerpo de la petición:
     ```json
     {
       "name": "Nombre Usuario",
       "email": "correo@ejemplo.com",
       "password": "contraseña",
-      "address": address,
+      "address": "address",
       "status": "Avalidable",
       "tokenRevoked": false,
-      "createDate": DATETIME,
+      "createDate": "DATETIME",
       "role": {id:2}  // Puede ser USER(2) o ADMIN(1)
     }
     ```
