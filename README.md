@@ -47,6 +47,8 @@ spring.jpa.hibernate.ddl-auto=validate
 
 
 ```
+### Agregar librerias al entorno de desarrollo
+En el proyecto encontrara un paquete nombrado libs con 3 .rar, con estos se hace todo el manejo de jwt y debe agregarlos a su entorno de desarrollo
 
 ### Construcción y ejecución
 
