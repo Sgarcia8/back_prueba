@@ -74,9 +74,9 @@ La aplicación estará disponible en: `http://localhost:8080`
       "email": "correo@ejemplo.com",
       "password": "contraseña",
       "address": address,
-      "status": "Avalidable";
-      "tokenRevoked" = false;
-      "createDate" = DATETIME;
+      "status": "Avalidable",
+      "tokenRevoked": false,
+      "createDate": DATETIME,
       "role": {id:2}  // Puede ser USER(2) o ADMIN(1)
     }
     ```
