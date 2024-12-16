@@ -78,7 +78,7 @@ La aplicación estará disponible en: `http://localhost:8080`
       "status": "Avalidable",
       "tokenRevoked": false,
       "createDate": "DATETIME",
-      "role": {id:2}  // Puede ser USER(2) o ADMIN(1)
+      "role": {"id":2} 
     }
     ```
 
