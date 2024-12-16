@@ -80,6 +80,7 @@ public class AuthController {
 
         String jwt = jwtUtil.generateToken(userDetails.getUsername(), role);
 
+        //Retorna un objeto con el token de acceso y la información del usuario que se esta logueando
         return ResponseEntity.ok(new AuthResponse(jwt, UserMapper.mapToUser(user)));
     }
 }

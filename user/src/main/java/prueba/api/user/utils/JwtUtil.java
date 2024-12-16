@@ -45,12 +45,15 @@ public class JwtUtil {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
+    //se agrega informacion del usuario, como su username y role
     public String generateToken(String username, String role) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);  // Agregar el rol como un claim
         return createToken(claims, username);
     }
 
+
+    //Metodo para crear el token, se asigna tiempo de expiracion, metodo en encriptamiento, usuario al cual le pertenece
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts
                 .builder()

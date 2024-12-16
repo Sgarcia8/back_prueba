@@ -35,6 +35,7 @@ public class UserServiceImp implements UserService {
 
         UserP userPM = UserMapper.mapToUser(userDTO);
 
+        //Hash the password
         String hashedPassword = passwordEncoder.encode(userDTO.getPassword());
         userPM.setPassword(hashedPassword);
 

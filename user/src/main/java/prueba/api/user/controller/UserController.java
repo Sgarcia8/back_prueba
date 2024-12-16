@@ -23,12 +23,14 @@ public class UserController {
         this.userService = userService;
     }
 
+    //Ruta para obtener a todos los usuarios
     @GetMapping("")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = userService.findAllUsers();
         return ResponseEntity.ok(users);
     }
 
+    //Ruta para eliminar un usuario, solo es accesible para los administradores
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{email}")
     public ResponseEntity<?> deleteUsuario(@PathVariable("email") String email){
@@ -36,6 +38,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Usuario eliminado con éxito"));
     }
 
+    //Ruta para modificar un usuario, solo es accesible para los administradores
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/actualizar/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable("id") Long id, @RequestBody UserDTO userDTO){

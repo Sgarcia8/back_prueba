@@ -32,6 +32,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     }
 
 
+    //Función para extraer la información del token y autenticar al usuario
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
